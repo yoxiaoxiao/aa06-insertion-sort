@@ -17,10 +17,24 @@ function insertionSort(arr) {
   - Insert the unsorted value at the break point
   Return the sorted array
   */
-
-  // Your code here 
+  let copy = [...arr];
+  let sorted =[];
+  while (copy.length > 0) {
+    console.log(sorted.join(","));
+    let curr = copy.pop();
+    sorted.push(null);
+    let i;
+    for (i = sorted.length -2; i >= 0; i--) {
+      if (sorted[i] <= curr) {
+        break;
+      }
+      sorted[i + 1] =  sorted[i];
+    }
+    sorted[i + 1] = curr;
+  }
+  return sorted;
 }
-
+  
 // In-place Insertion Sort
 // Mutates the original array
 function insertionSortInPlace(arr) {
@@ -40,7 +54,17 @@ function insertionSortInPlace(arr) {
   Return the mutated array
   */
 
-  // Your code here 
+  for (let i = 1; i < arr.length; i++) {
+    console.log(arr.join(","));
+    let curr = arr[i];
+    let j = i - 1;
+    while(j >= 0 && arr[j] > curr) {
+      arr[j + 1] = arr[j];
+      j--;
+    }
+    arr[j + 1] = curr;
+  }
+  return arr;
 }
 
 module.exports = [insertionSort, insertionSortInPlace];
